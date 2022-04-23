@@ -17,11 +17,13 @@ class Pacman {
   void GrowBody();
   bool CellIsOccuppied(int x, int y);
 
-  Direction direction = Direction::kUp;
+  Direction direction = Direction::kRight;
 
   float speed{0.1f};
   int size{1};
   bool alive{true};
+  const int width{25};
+  const int height{25};
   float position_x;
   float position_y;
 

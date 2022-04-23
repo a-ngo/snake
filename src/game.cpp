@@ -86,19 +86,29 @@ void Game::Update() {
     snake.speed += 0.02;
   }
 
-  // check for collision
-  // TODO(a-ngo): clean up ugly code
+  if (Collision(snake, pacman)) {
+    return;
+  }
+}
+
+bool Game::Collision(Snake &snake, Pacman &pacman) {
   int pacm_x = static_cast<int>(pacman.position_x);
   int pacm_y = static_cast<int>(pacman.position_y);
+
+  if (pacm_x == static_cast<int>(snake.head_x) &&
+      pacm_y == static_cast<int>(snake.head_y)) {
+    snake.alive = false;
+    return true;
+  }
+
   for (auto const &body_part : snake.body) {
-    if (pacm_x == body_part.x && pacm_y == body_part.y ||
-        pacm_x == static_cast<int>(snake.head_x) &&
-            pacm_y == static_cast<int>(snake.head_y)) {
+    if (pacm_x == body_part.x && pacm_y == body_part.y) {
       snake.alive = false;
-      std::cout << "PACMAN CATCHED SNAKE./n";
-      return;
+      return true;
     }
   }
+
+  return false;
 }
 
 int Game::GetScore() const { return score; }

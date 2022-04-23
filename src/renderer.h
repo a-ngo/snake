@@ -24,6 +24,8 @@ class Renderer {
   const std::size_t screen_height;
   const std::size_t grid_width;
   const std::size_t grid_height;
+
+  int pacman_frame;
 };
 
 #endif

@@ -31,6 +31,9 @@ class Game {
 
   void PlaceFood();
   void Update();
+
+  // Check if snake was catched by pacman
+  bool Collision(Snake &snake, Pacman &pacman);
 };
 
 #endif
