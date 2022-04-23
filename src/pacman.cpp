@@ -1,12 +1,33 @@
 #include "pacman.h"
 
 #include <cmath>
+#include <iostream>
 
 void Pacman::Update() { Move(); }
 
+// random movement
 void Pacman::Move() {
-  // TODO(a-ngo): implement behavior
-  position_x += speed;
+  float prev_position_x = position_x;
+  float prev_position_y = position_y;
+
+  int dir = random_direction(engine);
+  switch (dir) {
+    case 0:
+      direction = Direction::kUp;
+      position_y -= speed;
+      break;
+    case 1:
+      direction = Direction::kRight;
+      position_x += speed;
+      break;
+    case 2:
+      direction = Direction::kDown;
+      position_y += speed;
+      break;
+    case 3:
+      direction = Direction::kLeft;
+      position_x -= speed;
+  }
 
   // Wrap Pacman around to the beginning if going off of the screen.
   position_x = fmod(position_x + grid_width, grid_width);
