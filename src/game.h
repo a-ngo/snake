@@ -5,6 +5,7 @@
 
 #include "SDL.h"
 #include "controller.h"
+#include "pacman.h"
 #include "renderer.h"
 #include "snake.h"
 
@@ -19,6 +20,7 @@ class Game {
  private:
   Snake snake;
   SDL_Point food;
+  Pacman pacman;
 
   std::random_device dev;
   std::mt19937 engine;

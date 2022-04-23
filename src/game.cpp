@@ -6,6 +6,7 @@
 
 Game::Game(std::size_t grid_width, std::size_t grid_height)
     : snake(grid_width, grid_height),
+      pacman(grid_width, grid_height),
       engine(dev()),
       random_w(0, static_cast<int>(grid_width - 1)),
       random_h(0, static_cast<int>(grid_height - 1)) {
@@ -27,7 +28,7 @@ void Game::Run(Controller const &controller, Renderer &renderer,
     // Input, Update, Render - the main game loop.
     controller.HandleInput(running, snake);
     Update();
-    renderer.Render(snake, food);
+    renderer.Render(snake, food, pacman);
 
     frame_end = SDL_GetTicks();
 
@@ -59,7 +60,7 @@ void Game::PlaceFood() {
     y = random_h(engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    if (!snake.SnakeCell(x, y)) {
+    if (!snake.SnakeCell(x, y) && !pacman.CellIsOccuppied(x, y)) {
       food.x = x;
       food.y = y;
       return;
@@ -71,6 +72,7 @@ void Game::Update() {
   if (!snake.alive) return;
 
   snake.Update();
+  pacman.Update();
 
   int new_x = static_cast<int>(snake.head_x);
   int new_y = static_cast<int>(snake.head_y);
@@ -82,6 +84,20 @@ void Game::Update() {
     // Grow snake and increase speed.
     snake.GrowBody();
     snake.speed += 0.02;
+  }
+
+  // check for collision
+  // TODO(a-ngo): clean up ugly code
+  int pacm_x = static_cast<int>(pacman.position_x);
+  int pacm_y = static_cast<int>(pacman.position_y);
+  for (auto const &body_part : snake.body) {
+    if (pacm_x == body_part.x && pacm_y == body_part.y ||
+        pacm_x == static_cast<int>(snake.head_x) &&
+            pacm_y == static_cast<int>(snake.head_y)) {
+      snake.alive = false;
+      std::cout << "PACMAN CATCHED SNAKE./n";
+      return;
+    }
   }
 }
 
