@@ -76,12 +76,6 @@ void Renderer::Render(Snake const snake, SDL_Point const& food,
   SDL_RenderFillRect(sdl_renderer, &block);
 
   // Render pacman
-  // TODO(a-ngo): render pacman image and clean up
-  // SDL_SetRenderDrawColor(sdl_renderer, 255, 255, 0, 0xFF);
-  // block.x = static_cast<int>(pacman.position_x) * block.w;
-  // block.y = static_cast<int>(pacman.position_y) * block.h;
-  // SDL_RenderFillRect(sdl_renderer, &block);
-
   // get pacman textures
   SDL_Texture* entityTexture;
   SDL_Rect pacmanUP[3];
@@ -114,7 +108,6 @@ void Renderer::Render(Snake const snake, SDL_Point const& food,
 
   SDL_FreeSurface(pacman_image);
 
-  // actual rendering of pacman
   SDL_Rect srcRect, dsRect;
   dsRect = {static_cast<int>(pacman.position_x) * block.w,
             static_cast<int>(pacman.position_y) * block.h, pacman.width,
@@ -141,33 +134,6 @@ void Renderer::Render(Snake const snake, SDL_Point const& food,
   }
 
   SDL_RenderCopy(sdl_renderer, entityTexture, &srcRect, &dsRect);
-
-  // SDL_Rect targetRect;  // Rectangle to which pacman image will be drawn
-  // SDL_Surface* pacman_surface = NULL;  // To hold bmp image
-  // SDL_Texture* bmpTexture = NULL;      // To hold bmp image
-
-  // // Load image and store in an SDL_Surface
-  // pacman_surface = SDL_LoadBMP("../assets/pacman.bmp");
-  // if (pacman_surface == NULL) {
-  //   std::cout << "ERROR: could not load bmp file./n";
-  // }
-
-  // // Convert surface to texture for rendering
-  // bmpTexture = SDL_CreateTextureFromSurface(sdl_renderer, pacman_surface);
-  // if (bmpTexture == NULL) {
-  //   std::cout << "ERROR: could not convert bmp surface./n";
-  // }
-
-  // SDL_FreeSurface(pacman_surface);
-
-  // // Define rectangle where pacman image is to be blitted
-  // targetRect.w = 30;
-  // targetRect.h = 30;
-  // targetRect.x = (static_cast<int>(pacman.position_x) / 2) - (targetRect.w
-  // / 2); targetRect.y = (static_cast<int>(pacman.position_y) / 2) -
-  // (targetRect.h / 2);
-
-  // SDL_RenderCopy(sdl_renderer, bmpTexture, NULL, &targetRect);
 
   // Update Screen
   SDL_RenderPresent(sdl_renderer);
