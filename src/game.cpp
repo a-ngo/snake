@@ -60,7 +60,7 @@ void Game::PlaceFood() {
     y = random_h(engine);
     // Check that the location is not occupied by a snake item before placing
     // food.
-    if (!snake.SnakeCell(x, y) && !pacman.CellIsOccuppied(x, y)) {
+    if (!snake.CellIsOccuppied(x, y) && !pacman.CellIsOccuppied(x, y)) {
       food.x = x;
       food.y = y;
       return;

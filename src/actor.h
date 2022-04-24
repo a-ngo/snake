@@ -8,19 +8,14 @@ class Actor {
   Actor() {}
   ~Actor() {}
 
-  void Update();
+  virtual void Update() = 0;
+  virtual bool CellIsOccuppied(int x, int y) = 0;
 
-  void GrowBody();
-  bool CellIsOccuppied(int x, int y);
+  float speed{0.1f};
+  int size{1};
+  bool alive{true};
 
-  Direction direction;
-
-  float speed;
-  int size;
-  bool alive;
-
- private:
-  bool growing;
+  Direction direction = Direction::kUp;
   int grid_width;
   int grid_height;
 };

@@ -1,29 +1,19 @@
 #ifndef PACMAN_H
 #define PACMAN_H
 
+#include <actor.h>
+
 #include <random>
 
-class Pacman {
+class Pacman : public virtual Actor {
  public:
-  enum class Direction { kUp, kDown, kLeft, kRight };
-
-  Pacman(int grid_width, int grid_height)
-      : grid_width{grid_width},
-        grid_height{grid_height},
-        engine(dev()),
-        random_direction(0, 4) {}
+  Pacman(int grid_width, int grid_height);
   ~Pacman() {}
 
-  void Update();
-
-  void GrowBody();
-  bool CellIsOccuppied(int x, int y);
-
-  Direction direction = Direction::kRight;
+  void Update() override;
+  bool CellIsOccuppied(int x, int y) override;
 
   float speed{0.5f};
-  int size{1};
-  bool alive{true};
   const int width{25};
   const int height{25};
   float position_x;
@@ -36,7 +26,6 @@ class Pacman {
  private:
   void Move();
 
-  bool growing{false};
   int grid_width;
   int grid_height;
 };

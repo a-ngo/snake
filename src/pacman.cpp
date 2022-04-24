@@ -3,6 +3,12 @@
 #include <cmath>
 #include <iostream>
 
+Pacman::Pacman(int grid_width, int grid_height)
+    : grid_width{grid_width},
+      grid_height{grid_height},
+      engine(dev()),
+      random_direction(0, 4) {}
+
 void Pacman::Update() { Move(); }
 
 // random movement
