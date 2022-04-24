@@ -1,8 +1,9 @@
-# Snake Game
+# Snake v Pacman
 
-This snake game is based on the starter repo for the Capstone project in the [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). 
+In this snake game Pacman is the antagonist. The goal is to eat the food that appears randomly and not get caught by Pacman.
 
-<img src="snake_game.gif"/>
+
+<img src="assets/snake_v_pacman.gif"/>
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -26,3 +27,43 @@ This snake game is based on the starter repo for the Capstone project in the [Ud
 2. Make a build directory in the top level directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
+
+## Addressed rubic criteria
+
+#### Readme  
+* [x] Instructions
+* [x] 3rd party libraries: SDL2, SDL2_image
+* [x] Description
+
+#### Compiling and Testing  
+* [x] Compile & run without error
+
+#### Loops, Functions, I/O  
+* [x] Functions and control structures
+* [x] Reads files, process data, outputs it
+* [x] Accepts user input & output
+
+#### Object Oriented Programming  
+* [x] Organized in classes
+* [x] Appropriate access for class members
+* [x] Initialization lists
+* [x] Clear interfaces
+* [x] Encapsulate behaviour
+* [x] Inheritance
+* [ ] Overloaded functions
+* [x] Override virtual functions
+* [ ] Templates
+
+#### Memory Management  
+* [x] Pass-by-reference
+* [x] Appropriate use of destructors
+* [x] Uses RAII
+* [ ] Follows the Rule of 5
+* [ ] Uses move semantics instead of copying
+* [ ] Smart pointers instead of raw pointers
+
+#### Concurrency
+* [ ] Uses multiple threads
+* [ ] Uses promise & future
+* [ ] Uses mutex or lock
+* [ ] Uses condition variable
