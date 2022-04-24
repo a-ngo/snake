@@ -28,6 +28,38 @@ In this snake game Pacman is the antagonist. The goal is to eat the food that ap
 3. Compile: `cmake .. && make`
 4. Run it: `./SnakeGame`.
 
+
+## Project Structure
+
+```
+project
+| .gitignore
+| CMakeLists.txt
+| LICENSE.md
+| README.md
+│
+└─── assets
+│   | pacman_and_ghost_texture.png
+│   | snake_v_pacman.gif
+│
+└─── cmake
+|   | FindSDL2_image.cmake
+│
+└─── src
+    | actor.h
+    | controller.cpp
+    | controller.h
+    | game.cpp
+    | game.h
+    | main.cpp
+    | pacman.cpp
+    | pacman.h
+    | renderer.cpp
+    | snake.cpp
+    | snake.h
+
+```
+
 ## Addressed rubic criteria
 
 #### Readme  
